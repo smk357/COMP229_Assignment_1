@@ -1,0 +1,16 @@
+/*
+style.css
+Syed Kazmi
+301330922
+2023-10-27
+*/
+
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}

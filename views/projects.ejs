@@ -1,0 +1,41 @@
+<!-- views/projects.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="main-content">
+    <h1>Projects</h1>
+    
+    <!-- Replace the following with your project details -->
+    <div class="project">
+      
+      <h2>Pharmacy Management Database</h2>
+      <img src="/images/project1.png" alt="Project 1">
+      <p>Role: Project Lead<br>Outcome: Sample database</p>
+    </div>
+    
+    <div class="project">
+      <h2>Bike Share Analysis</h2>
+      <img src="/images/project2.jpg" alt="Project 2">
+      <p>Role: Data Analyst<br>Outcome: Analysis of bike share data</p>
+    </div>
+    
+    <div class="project">
+      <h2>Credit Risk Analysis</h2>
+      <img src="/images/project3.jpg" alt="Project 3">
+      <p>Role: Data Analyst<br>Outcome: Credit Analysis using various statistical techniques</p>
+    </div>
+    
+    <!-- End of project details -->
+    
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

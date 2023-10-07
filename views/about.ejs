@@ -1,0 +1,26 @@
+<!-- views/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Me</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <section class="main-content">
+    <h1>About Me</h1>
+    <img src="/images/profile.jpeg" alt="My Profile">
+    <p>My name is Syed Kazmi. I am a second year Software Engineering student at Centennial College.</p>
+    <a href="/contact">Contact Me</a>
+      <!-- Link to PDF Resume -->
+    <p>
+        You can view my resume by clicking the following link: 
+        <a href="\Syed_Kazmi_Resume.pdf" target="_blank">Download Resume (PDF)</a>
+    </p>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
