@@ -1,0 +1,27 @@
+<!-- views/update.ejs -->
+<html>
+<head>
+    <title>Update Business Contact</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <h1>Update Business Contact</h1>
+    <form action="/update/<%= user._id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= user.name %>"><br>
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" name="contactNumber" value="<%= user.contactNumber %>"><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<%= user.email %>"><br>
+        <button type="submit">Update</button>
+    </form>
+    <form action="/delete/<%= user._id %>" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+    <form action="/update/<%= user._id %>" method="post">
+    <a href="/business-contacts"><button type="button">Cancel</button></a>
+    </form>
+
+</body>
+</html>

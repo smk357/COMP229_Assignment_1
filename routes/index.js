@@ -7,6 +7,8 @@ Syed Kazmi
 // routes/index.js
 const express = require('express');
 const router = express.Router();
+const pFolioUsers = require('../models/pFolioUsers');
+
 
 // Home Page
 router.get('/', (req, res) => {
@@ -47,5 +49,81 @@ router.post('/contact', (req, res) => {
   //redirect the user to the home page
   res.redirect('/');
 });
+
+// Login Page
+router.get('/login', (req, res) => {
+  res.render('login', { title: 'Login' });
+});
+
+router.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  // Use a promise to find a user by username and password
+  pFolioUsers.findOne({ username, password })
+      .then((user) => {
+          if (!user) {
+              // Incorrect credentials; reload the login page
+              res.redirect('/login');
+          } else {
+              // Authentication successful; redirect to the business-contacts page
+              res.redirect('/business-contacts');
+          }
+      })
+      .catch((err) => {
+          console.error(err);
+          // Handle the error as needed
+      });
+});
+router.get('/business-contacts', (req, res, next) => {
+  pFolioUsers.find({}, 'name contactNumber email')
+      .then((userList) => {
+          res.render('business-contacts', { title: 'Business Contacts', userList });
+      })
+      .catch((err) => {
+          console.error(err);
+          // Handle the error as needed
+      });
+});
+// Update Page - View
+router.get('/update/:id', (req, res) => {
+  const userId = req.params.id;
+  pFolioUsers.findById(userId)
+      .then((user) => {
+          res.render('update', { title: 'Update Business Contact', user });
+      })
+      .catch((err) => {
+          console.error(err);
+          // Handle the error as needed
+      });
+});
+
+// Handle form submission for updates (POST method)
+router.post('/update/:id', (req, res) => {
+  const userId = req.params.id;
+  const { name, contactNumber, email } = req.body;
+  pFolioUsers.findByIdAndUpdate(userId, { name, contactNumber, email })
+      .then(() => {
+          // Redirect to the business-contacts page
+          res.redirect('/business-contacts');
+      })
+      .catch((err) => {
+          console.error(err);
+          // Handle the error as needed
+      });
+});
+// Handle form submission for delete (POST method)
+router.post('/delete/:id', (req, res) => {
+  const userId = req.params.id;
+  pFolioUsers.findByIdAndRemove(userId)
+      .then(() => {
+          // Redirect to the business-contacts page
+          res.redirect('/business-contacts');
+      })
+      .catch((err) => {
+          console.error(err);
+          // Handle the error as needed
+      });
+});
+
 
 module.exports = router;

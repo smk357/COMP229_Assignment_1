@@ -1,0 +1,29 @@
+<!-- views/business-contacts.ejs -->
+<html>
+<head>
+    <title>Business Contacts</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <h1>Business Contacts</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Contact Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <% for (const user of userList) { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.contactNumber %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <a href="/update/<%= user._id %>">Update</a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
